@@ -17,3 +17,4 @@ Capybara.default_driver = driver
 Capybara.register_driver driver do |app|
   Capybara::Selenium::Driver.new(app, :browser => browser)
 end
+Capybara.current_session.driver.browser.manage.window.maximize

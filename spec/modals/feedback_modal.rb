@@ -3,16 +3,17 @@ require 'pages/page_helper'
 class FeedbackModal
   include Capybara::DSL
 
-  @close_button = 'button.btn.btn-close'
-  @x_button = 'i.icon-remove'
-  @support_message_class = 'support-message'
+  @close_button = 'btn.btn-close'
+  @x_button = ''
+  @support_message = ''
   
   def close
-    click_button @close_button
+    find_button(@close_button).click
   end
 
+  # todo: get this to work
   def read_support_message
-    page.find('class', @support_message_class).value
+    find(@support_message).text
   end
 
 end

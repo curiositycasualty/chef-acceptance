@@ -16,7 +16,12 @@ describe "feedback", :type => :feature do
   it "email contained in feedback modal" do
     login_page.login 'patrick', 'patrick'
     expect(page).to have_content 'Signed in aspatrick patrick'
+
+    # we do not want to have such a generic page content search. this is just an example
+    expect(page).not_to have_content 'support@getchef.com'
     usernav.open_feedback_modal
-    expect(feedback_modal.read_support_message).to have_content 'support@getchef.com'
+    expect(page).to have_content 'support@getchef.com'
+    
+    feedback_modal.close
   end
 end
