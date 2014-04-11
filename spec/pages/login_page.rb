@@ -1,5 +1,4 @@
-require 'capybara'
-require 'capybara/dsl'
+require 'pages/page_helper'
 
 class LoginPage
   include Capybara::DSL
