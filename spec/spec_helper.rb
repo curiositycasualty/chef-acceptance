@@ -2,19 +2,18 @@ require 'capybara/rspec'
 require 'pages/login_page'
 require 'pages/header'
 require 'modals/feedback_modal'
+require 'yaml'
 
-# todo: this will be configurable via config file
-app_host = 'https://manage.opscode.piab'
-driver = :selenium
-browser = :firefox
+# make test config file configurable
+test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
 
-Capybara.default_wait_time = 5
+Capybara.default_wait_time = test_config['wait_time']
 
-Capybara.app_host = app_host
+Capybara.app_host = test_config['app_host']
 
 # work together driver + browser
-Capybara.default_driver = driver
-Capybara.register_driver driver do |app|
-  Capybara::Selenium::Driver.new(app, :browser => browser)
+Capybara.default_driver = test_config['driver'].to_sym
+Capybara.register_driver test_config['driver'].to_sym do |app|
+  Capybara::Selenium::Driver.new(app, :browser => test_config['browser'].to_sym)
 end
 Capybara.current_session.driver.browser.manage.window.maximize
