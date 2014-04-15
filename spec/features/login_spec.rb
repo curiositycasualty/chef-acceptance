@@ -6,8 +6,6 @@ login_page = LoginPage.new
 usernav = Header::UserNav.new
 feedback_modal = FeedbackModal.new
 
-# todo: considering tracking current page automatically
-
 describe "user login", :type => :feature do
 
   before(:all) do
