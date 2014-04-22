@@ -1,8 +1,19 @@
+require 'capybara'
 require 'capybara/rspec'
-require 'pages/login_page'
-require 'pages/header'
-require 'modals/feedback_modal'
+require 'selenium-webdriver'
+require 'site_prism'
 require 'yaml'
+require 'capybara/poltergeist'
+
+require 'sections/feedback_modal'
+require 'sections/navigation'
+require 'pages/manage_page'
+
+
+
+
+require 'pages/login_page'
+require 'pages/administration_page'
 
 # make test config file configurable
 test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
@@ -14,6 +25,19 @@ Capybara.app_host = test_config['app_host']
 # work together driver + browser
 Capybara.default_driver = test_config['driver'].to_sym
 Capybara.register_driver test_config['driver'].to_sym do |app|
-  Capybara::Selenium::Driver.new(app, :browser => test_config['browser'].to_sym)
+ Capybara::Selenium::Driver.new(app, :browser => test_config['browser'].to_sym)
 end
 Capybara.current_session.driver.browser.manage.window.maximize
+
+SitePrism.configure do |config|
+  config.use_implicit_waits = true
+end
+
+# #Capybara.register_driver :poltergeist do |app|
+# #  Capybara::Poltergeist::Driver.new(app)
+# #end
+ 
+# Capybara.default_driver = :poltergeist
+# Capybara.register_driver :poltergeist do |app|
+#   Capybara::Poltergeist::Driver.new(app, {:phantomjs_options => ['--ignore-ssl-errors=yes'], :debug => true})
+# end
