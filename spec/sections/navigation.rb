@@ -6,7 +6,6 @@ module Navigation
 
     element :feedback_link, 'span.usernav-section.report-bug'
     element :user_dropdown, 'span.user-dropdown > div.dropdown > a.dropdown-toggle'
-    element :user_semimodal, 'ul.dropdown-menu.semimodal-pullout'
 
     def open_feedback_modal
       feedback_link.click
@@ -19,5 +18,8 @@ module Navigation
   end
 
   class Footer < SitePrism::Section
+  end
+
+  class Tabs < SitePrism::Section
   end
 end

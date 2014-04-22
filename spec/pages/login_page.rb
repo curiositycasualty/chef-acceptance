@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Page
-  class Login < Page::Manage
+  class Login < SitePrism::Page
     set_url '/login'
       
     element :login_username, '#login-username'

@@ -4,16 +4,7 @@ require 'selenium-webdriver'
 require 'site_prism'
 require 'yaml'
 require 'capybara/poltergeist'
-
-require 'sections/feedback_modal'
-require 'sections/navigation'
-require 'pages/manage_page'
-
-
-
-
-require 'pages/login_page'
-require 'pages/administration_page'
+require 'manage_app'
 
 # make test config file configurable
 test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
