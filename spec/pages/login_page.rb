@@ -1,41 +1,37 @@
-require 'pages/page_helper'
+require 'spec_helper'
 
-class LoginPage
-  include Capybara::DSL
-
-  # todo: may need to create attr_readers
-  def initialize
-    @path = '/login'
+module Page
+  class Login < SitePrism::Page
+    set_url '/login'
+      
+    element :login_username, '#login-username'
+    element :login_password, '#login-password'
+    element :login_button, 'input.btn.btn-small'
     
-    @login_username = 'login-username'
-    @login_password = 'login-password'
-    @login_button = 'Sign In'
+    element :signup_fullname, '#signup-display-name'
+    element :signup_username, '#signup-username'
+    element :signup_email, '#signup-email'
+    element :signup_password, '#signup-password'
+    element :signup_company, '#signup-company'
+    element :signup_organization, '#signup-organization'
+    element :signup_button, 'input.btn.btn-primary'
 
-    @signup_fullname = 'signup-display-name'
-    @signup_username = 'signup-username'
-    @signup_email = 'signup-email'
-    @signup_password = 'signup-password'
-    @signup_company = 'signup-company'
-    @signup_organization = 'signup-organization'
-    @signup_button = 'Get Started'
+    def login(username, password)
+      visit url
+      login_username.set username
+      login_password.set password
+      login_button.click
+    end
+
+    def signup(fullname, username, email, password, organization, company = '')
+      visit url
+      signup_fullname.set fullname
+      signup_username.set username
+      signup_email.set email
+      signup_password.set password
+      signup_company.set company
+      signup_organization.set organization
+      signup_button.click
+    end
   end
-
-  def login(username, password)
-    visit @path
-    fill_in @login_username, :with => username
-    fill_in @login_password, :with => password
-    click_button @login_button
-  end
-
-  def signup(fullname, username, email, password, organization, company = '')
-    visit @path
-    fill_in @signup_fullname, :with => fullname
-    fill_in @signup_username, :with => username
-    fill_in @signup_email, :with => email
-    fill_in @signup_password, :with => password
-    fill_in @signup_company, :with => company
-    fill_in @signup_organization, :with => organization
-    click_button @signup_button
-  end
-
 end
