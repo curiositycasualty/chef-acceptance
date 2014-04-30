@@ -4,27 +4,29 @@ module Page
   class Roles < SitePrism::Page
     set_url '/organizations{/org}/roles' 
 
-    element :name, '#create-role-name'
-    element :description, '#create-role-desc'
-    element :create_role_button, 'button.btn.btn-primary'
-
+    element :name_input, '#create-role-name'
+    element :description_input, '#create-role-desc'
+    element :create_org_button, :xpath, '//button[@class="btn btn-primary" and not(@disabled)]'
     element :create_link, 'a.create'
-
-    elements :roles, '#list-pane div.slick-cell.l0.r0'
+    elements :role_grid, '#list-pane div.slick-cell.l0.r0'
+    element :role_modal, 'div.modal.in'
 
     # currently creates basic role
-    def create(role_name, role_description)
+    def create(name, description)
       create_link.click
 
-      find ('div.modal.in')
+      #find ('div.modal.in')
+      wait_for_role_modal
 
-      name.set role_name
-      description.set role_description
+      name_input.set name
+      description_input.set description
       
-      # BOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!
-      find(:xpath, '//button[@class="btn btn-primary" and not(@disabled)]').click
+      # BOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!! can not access state with css, have to use xpath
+      #find(:xpath, '//button[@class="btn btn-primary" and not(@disabled)]').click
+      wait_for_create_org_button
+      create_org_button.click
       
-      wait_for_roles
+      wait_for_role_grid
     end
 
     def delete
@@ -34,16 +36,11 @@ module Page
     end
 
     def find_role(name)
-      wait_for_roles
+      wait_for_role_grid
 
-      match = roles.find do |role|
+      role_grid.find do |role|
         role.text == name
       end
-
-      raise 'Role not found' if match.nil?
-
-      return match
     end
-
   end
 end

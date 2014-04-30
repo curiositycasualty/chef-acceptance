@@ -1,0 +1,4 @@
+app_host: https://manage.opscode.piab
+driver: selenium
+browser: firefox
+wait_time: 5

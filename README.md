@@ -1,39 +1,34 @@
-chef-manage-acceptance
-======================
-another acceptance test prototype using capybara/rspec
+chef-acceptance
+===============
 
+End to end Chef acceptance tests
+
+### Configuration
+copy test-config.template.yml to test-config.yml
+
+Set `app_host` to the full URL path of chef server front-end.
+Set `driver` to selenium.  No other drivers currently supported.
+Set `browser` to firefox.  Maybe Chome works? Haven't tried it.
+Set `wait_time` to 5.  Probably a good starting point.
+
+### Execution
+```
 bundle install
 
 rake spec
+```
 
+### Development
+During development of new pages and objects you'll find yourself in change, run, change, mode.  For UI tests, this is incredible painful.  This project comes equipped with a runtime conosle environment.
 
-split harness from tests
+Run `rake console` and let it load (using the test-config options)
 
-move tests to webui2
+```ruby
+require 'pages/login'
 
-pulling harness as dep
+p = Page::Login.new
 
+p.load
+```
 
-
-
-future:
-
-run in travis
-
-run in saucelabs
-
-require 'sauce/capybara'
-
-
-references:
-
-http://rubydoc.info/github/jnicklas/capybara/master
-
-https://code.google.com/p/selenium/wiki/RubyBindings
-
-
-kanban:
-https://chef.leankit.com/Boards/View/97159481#workflow-view
-
-
-https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
+### Standards and Best Practices

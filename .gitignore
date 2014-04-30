@@ -36,3 +36,5 @@ build/
 /.chef/
 
 .DS_Store
+
+test-config.yml

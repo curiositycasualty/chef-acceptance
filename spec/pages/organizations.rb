@@ -2,28 +2,34 @@ require 'spec_helper'
 require 'sections/create_org_modal'
 
 module Page
-  class Organizations < Page::ChefManage
+  class Organizations < SitePrism::Page
     set_url '/organizations{/org}'
 
-    elements :orgs, '#list-pane div.slick-cell.l0.r0'
+    elements :org_grid, '#list-pane div.slick-cell.l0.r0'
+    element :create_link, 'a.create'
 
     section :create_org_modal, Modal::CreateOrg, 'div.modal.in'
 
-    def select_org(name)
-      match = orgs.find do |org|
+    def find_org(name)
+      org_grid.find do |org|
         org.text == name
       end
-
-      raise 'Org not found' if match.nil?
-
-      match.click
     end
 
-    def create(org_full, org_short)
-      #click create link
-      click_link 'Create'
+    def select_org(name)
+      org = find_org name
 
-      create_org_modal.create org_full, org_short
+      if org.nil?
+        raise 'Org not found, nothing to select' 
+      else
+        org.click
+      end
+    end
+
+    def create(fullname, shortname)
+      create_link.click
+
+      create_org_modal.create fullname, shortname
     end
   end
 end

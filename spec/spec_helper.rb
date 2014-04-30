@@ -6,7 +6,7 @@ require 'site_prism'
 require 'yaml'
 require 'capybara/poltergeist'
 
-# make test config file configurable
+# make test config file configurable - env var
 test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
 
 Capybara.default_wait_time = test_config['wait_time']
@@ -23,12 +23,3 @@ Capybara.current_session.driver.browser.manage.window.maximize
 SitePrism.configure do |config|
   config.use_implicit_waits = true
 end
-
-# #Capybara.register_driver :poltergeist do |app|
-# #  Capybara::Poltergeist::Driver.new(app)
-# #end
- 
-# Capybara.default_driver = :poltergeist
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, {:phantomjs_options => ['--ignore-ssl-errors=yes'], :debug => true})
-# end

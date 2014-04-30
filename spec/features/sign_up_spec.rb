@@ -1,5 +1,5 @@
-require 'spec_helper'
-require 'pages/sign_up'
+#equire 'spec_helper'
+#require 'pages/sign_up'
 
 # describe "sign up", :type => :feature do
 

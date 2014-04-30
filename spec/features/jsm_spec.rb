@@ -19,8 +19,12 @@ feature 'Node roles converge associated recipes', :type => :feature do
 
     expect(page).to have_content "Signed in as#{ts}"
 
-    go_to_policy # defaults to cookbooks page
-    go_to_roles # skanky
+    # option 1 - navigate links
+    Header.go_to_policy
+    Policy.go_to_roles
+
+    #option 2 - direct page load
+    # roles_page.load(org: ts)
 
     roles_page.create 'happyrole', "Role: #{ts}"
 
@@ -28,11 +32,6 @@ feature 'Node roles converge associated recipes', :type => :feature do
   end
 
 end
-
-
-
-
-
 
 # add a recipe to a role
 # add that role to a specific client
