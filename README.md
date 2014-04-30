@@ -4,11 +4,14 @@ chef-acceptance
 End to end Chef acceptance tests
 
 ### Configuration
-copy test-config.template.yml to test-config.yml
+Copy test-config.template.yml to test-config.yml
 
 Set `app_host` to the full URL path of chef server front-end.
+
 Set `driver` to selenium.  No other drivers currently supported.
+
 Set `browser` to firefox.  Maybe Chome works? Haven't tried it.
+
 Set `wait_time` to 5.  Probably a good starting point.
 
 ### Execution
@@ -31,4 +34,4 @@ p = Page::Login.new
 p.load
 ```
 
-### Standards and Best Practices
+### Standards and Conventions
