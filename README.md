@@ -22,7 +22,7 @@ rake spec
 ```
 
 ### Development
-During development of new pages and objects you'll find yourself in change, run, change, mode.  For UI tests, this is incredible painful.  This project comes equipped with a runtime conosle environment.
+During development of new pages and objects you'll find yourself in change-run-change-run mode.  For UI tests, this is incredibly painful.  This project comes equipped with a runtime console environment.
 
 Run `rake console` and let it load (using the test-config options)
 
