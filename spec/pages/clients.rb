@@ -22,9 +22,11 @@ module Page
 
       wait_for_private_key_content
 
-      return private_key_content.text
-
+      key = private_key_content.text
+      
       close_button.click
+
+      return key
     end
 
     def delete
