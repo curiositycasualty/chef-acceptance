@@ -1,14 +1,14 @@
 require "rspec/core/rake_task"
 
-home_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
+chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 
 task :default => [:spec]
-
 RSpec::Core::RakeTask.new do |task|
   task.pattern = 'spec/**/*_spec.rb'
   task.verbose = false
 end
 
+desc 'Bootstrap browser environment and start pry'
 task :console do
   $LOAD_PATH << './spec'
   

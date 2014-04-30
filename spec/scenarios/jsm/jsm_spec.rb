@@ -12,13 +12,6 @@ feature 'Node roles converge associated recipes', :type => :feature do
   let(:roles_page) { Page::Roles.new }
   let(:clients_page) { Page::Clients.new }
 
-  after(:all) do
-  end
-
-  background(:all) do
-    # set up node
-  end
-
   scenario '' do
     sign_up_page.load
     sign_up_page.sign_up ts, ts, "#{ts}@getchef.com", 'password', ts, ts
