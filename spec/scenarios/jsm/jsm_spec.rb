@@ -35,8 +35,9 @@ feature 'Node roles converge associated recipes', :type => :feature do
 
     Policy.go_to_clients
 
-    clients_page.create 'jsmtest'
+    key = clients_page.create 'jsmtest'
 
+    puts key
   end
 
 end

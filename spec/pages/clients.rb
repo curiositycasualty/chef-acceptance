@@ -9,6 +9,8 @@ module Page
     element :create_client_modal, 'div.modal.modal-client-create.in'
     element :client_name_text, '#client-user-name'
     element :create_client_button, :xpath, '//button[@class="btn btn-primary btn-create" and not(@disabled)]'
+    element :private_key_content, 'pre.private_key'
+    element :close_button, 'button.btn.btn-close'
 
     def create(name)
       create_link.click
@@ -17,6 +19,12 @@ module Page
       check('client-validator')
       wait_for_create_client_button
       create_client_button.click
+
+      wait_for_private_key_content
+
+      return private_key_content.text
+
+      close_button.click
     end
 
     def delete
