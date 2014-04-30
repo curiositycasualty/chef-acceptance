@@ -53,6 +53,7 @@ module Navigation
       end
 
       def go_to_clients
+        click_link 'Clients'
       end
     end
   end

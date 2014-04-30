@@ -6,7 +6,7 @@ require 'capybara'
 vagrant_cluster "#{ENV['HOME']}/machinetest"
 
 with_chef_server Capybara.app_host, {
-  :client_name => 'jsm_test',
+  :client_name => 'jsmtest',
   :signing_key_filename => Chef::Config[:client_key]
 }
 
@@ -18,5 +18,5 @@ vagrant_box 'precise64' do
 #EOM
 end
 
-machine 'jsm_test' do
+machine 'jsmtest' do
 end

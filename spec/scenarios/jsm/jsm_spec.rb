@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'pages/sign_up'
 require 'sections/navigation'
 require 'pages/roles'
+require 'pages/clients'
 
 include Navigation
 
@@ -9,6 +10,7 @@ feature 'Node roles converge associated recipes', :type => :feature do
   let(:ts) { Time.now.to_i }
   let(:sign_up_page) { Page::SignUp.new }
   let(:roles_page) { Page::Roles.new }
+  let(:clients_page) { Page::Clients.new }
 
   background(:all) do
     # set up node
@@ -30,6 +32,11 @@ feature 'Node roles converge associated recipes', :type => :feature do
     roles_page.create 'happyrole', "Role: #{ts}"
 
     expect(roles_page.find_role('happyrole').text).to have_content 'happyrole'
+
+    Policy.go_to_clients
+
+    clients_page.create 'jsmtest'
+
   end
 
 end
