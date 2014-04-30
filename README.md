@@ -34,3 +34,6 @@ https://code.google.com/p/selenium/wiki/RubyBindings
 
 kanban:
 https://chef.leankit.com/Boards/View/97159481#workflow-view
+
+
+https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md

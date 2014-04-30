@@ -1,10 +1,10 @@
+# figure out where we are being loaded from
 require 'capybara'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'yaml'
 require 'capybara/poltergeist'
-require 'manage_app'
 
 # make test config file configurable
 test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
