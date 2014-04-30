@@ -5,7 +5,7 @@ module Modal
     element :org_fullname_input, '#create-org-fullname'
     element :org_shortname_input, '#create-org-shortname'
     element :create_org_button, 'button.btn.btn-submit.btn-primary'
-    element :cancel_buton, 'button.btn.btn-close'
+    element :cancel_button, 'button.btn.btn-close'
 
     def create(fullname, shortname)
       org_fullname_input.set fullname

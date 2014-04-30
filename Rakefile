@@ -5,7 +5,6 @@ RSpec::Core::RakeTask.new do |task|
   task.verbose = false
 end
 
-
 task :console do
   $LOAD_PATH << './spec'
   

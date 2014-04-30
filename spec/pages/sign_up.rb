@@ -22,12 +22,12 @@ module Page
     # Create Org modal
     section :create_org_modal, Modal::CreateOrg, 'div.modal.in'
     
-    def sign_up(fullname, username, email, password, org_full, org_short, company = '')
+    def sign_up(fullname, username, email, password, org_full, org_short, options = {})
       signup_fullname_input.set fullname
       signup_username_input.set username
       signup_email_input.set email
       signup_password_input.set password
-      signup_company_input.set company
+      signup_company_input.set options[:company] if options[:company]
       signup_button.click
 
       create_new_org_button.click

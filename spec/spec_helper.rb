@@ -1,13 +1,11 @@
-# figure out where we are being loaded from
 require 'capybara'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'yaml'
-require 'capybara/poltergeist'
 
 # make test config file configurable - env var
-test_config = YAML::load_file(File.join(__dir__, '../test-config.yml'))
+test_config = YAML::load_file(File.join(File.dirname(__FILE__), '../test-config.yml'))
 
 Capybara.default_wait_time = test_config['wait_time']
 

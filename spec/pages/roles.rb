@@ -15,14 +15,11 @@ module Page
     def create(name, description)
       create_link.click
 
-      #find ('div.modal.in')
       wait_for_role_modal
 
       name_input.set name
       description_input.set description
       
-      # BOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!! can not access state with css, have to use xpath
-      #find(:xpath, '//button[@class="btn btn-primary" and not(@disabled)]').click
       wait_for_create_org_button
       create_org_button.click
       
@@ -36,8 +33,6 @@ module Page
     end
 
     def find_role(name)
-      wait_for_role_grid
-
       role_grid.find do |role|
         role.text == name
       end
