@@ -12,6 +12,9 @@ feature 'Node roles converge associated recipes', :type => :feature do
   let(:roles_page) { Page::Roles.new }
   let(:clients_page) { Page::Clients.new }
 
+  after(:all) do
+  end
+
   background(:all) do
     # set up node
   end
@@ -38,6 +41,9 @@ feature 'Node roles converge associated recipes', :type => :feature do
     key = clients_page.create 'jsmtest'
 
     puts key
+
+    system("#{ENV['CHEF_TEST_DIR']}/bin/chef-client -z -o client::basic,client::cleanup")
+
   end
 
 end

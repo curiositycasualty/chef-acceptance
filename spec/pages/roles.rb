@@ -33,6 +33,8 @@ module Page
     end
 
     def find_role(name)
+      wait_for_role_grid
+      
       role_grid.find do |role|
         role.text == name
       end

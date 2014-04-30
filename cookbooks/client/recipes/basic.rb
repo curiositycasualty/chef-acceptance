@@ -5,10 +5,8 @@ require 'capybara'
 # Set up a vagrant cluster (place for vms) in ~/machinetest
 vagrant_cluster "#{ENV['HOME']}/machinetest"
 
-with_chef_server Capybara.app_host, {
-  :client_name => 'jsmtest',
-  :signing_key_filename => Chef::Config[:client_key]
-}
+directory "#{ENV['HOME']}/machinetest/repo"
+with_chef_local_server :chef_repo_path => "#{ENV['HOME']}/machinetest/repo"
 
 # Use a Linux image
 vagrant_box 'precise64' do

@@ -15,11 +15,14 @@ Set `browser` to firefox.  Maybe Chrome works... haven't tried it.
 Set `wait_time` to 5.  Probably a good starting point.
 
 ### Execution
-```
-bundle install
+```bash
+rake bundle # use binstubs
 
-rake spec
+rake
 ```
+
+### Test Clients
+Some tests will need nodes in order to validate certain features.  This is handled dynamically with chef-metal.  The example used currently is weak, but shows that we can provision nodes during a test run using data collected from the tests.
 
 ### Development
 During development of new pages and objects you'll find yourself in change-run-change-run mode.  For UI tests, this is incredibly painful.  This project comes equipped with a runtime console environment.
