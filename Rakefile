@@ -2,6 +2,11 @@ require "rspec/core/rake_task"
 
 chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 
+task :bs do
+   system("#{ENV['CHEF_TEST_DIR']}/bin/chef-client -z -l debug -o client::local")
+end
+
+
 task :default => [:spec]
 RSpec::Core::RakeTask.new do |task|
   task.pattern = 'spec/**/*_spec.rb'

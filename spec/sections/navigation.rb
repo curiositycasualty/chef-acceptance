@@ -19,7 +19,7 @@ module Navigation
         find('li.logout').click
       end
 
-      def go_to_administation
+      def go_to_administration
         click_link 'Administration'
       end
 
@@ -57,6 +57,15 @@ module Navigation
       end
     end
   end
+
+  class Administration
+    class << self
+      def go_to_users
+        click_link 'Users'
+      end
+    end
+  end
+
   # class Header < SitePrism::Section
   #   section :feedback_modal, Modal::Feedback, '#usernav' #not actually correct. should be the root of where the modal exists, not where it's opened.
 

@@ -39,6 +39,9 @@ GEM
     chef-metal-fog (0.3.1)
       chef
       fog
+    chef-metal-ssh (0.0.4)
+      chef
+      chef-metal (~> 0.6)
     chef-metal-vagrant (0.2)
       chef
     chef-zero (1.7.3)
@@ -142,6 +145,7 @@ DEPENDENCIES
   capybara
   chef (= 11.10.4)
   chef-metal (~> 0.9.0)
+  chef-metal-ssh
   pry
   selenium-webdriver
   site_prism
