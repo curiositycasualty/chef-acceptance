@@ -14,9 +14,13 @@ Set `browser` to firefox.  Maybe Chrome works... haven't tried it.
 
 Set `wait_time` to 5.  Probably a good starting point.
 
+Temporary: Create a user with username `chef` and password `password`.  Create an org -- any name will do.
+
 ### Execution
 ```bash
 rake bundle # use binstubs
+
+rake berks_install # use binstubs
 
 rake
 ```
