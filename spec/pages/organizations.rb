@@ -6,7 +6,7 @@ module Page
   class Organizations < SitePrism::Page
     set_url '/organizations{/org}'
 
-    element :create_link, 'a.create'
+    element :create_link, :xpath, "(//a[contains(text(),'Create')])[1]"
     element :reset_validation_key_link, 'a.rekey'
     element :reset_key_button, 'button.btn.btn-warning.btn-reset'
     element :reset_key_content, 'pre'
@@ -32,10 +32,12 @@ module Page
       end
     end
 
-    def create(fullname, shortname)
+    def create_org(fullname, shortname)
       create_link.click
 
       create_org_modal.create fullname, shortname
+
+      wait_for_org_grid
     end
 
     def reset_key

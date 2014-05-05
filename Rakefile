@@ -28,3 +28,14 @@ desc 'Install required Gems into the vendor/bundle directory'
 task :bundle do
   system('bundle install --path vendor/bundle --binstubs')
 end
+
+desc 'Clean bundled gems dir then install required Gems into the vendor/bundle directory'
+task :rebundle do
+  system("rm -rf vendor/bundle")
+  Rake::Task['bundle'].execute
+end
+
+task :berks_install do
+  cookbooks_path = File.join(chef_test_dir, 'vendor/cookbooks')
+  system("#{chef_test_dir}/bin/berks vendor #{cookbooks_path}")
+end

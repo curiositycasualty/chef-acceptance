@@ -3,7 +3,7 @@ require 'lib/util'
 
 module Page
   class Clients < SitePrism::Page
-    set_url '/organizations{/org}/clients'
+    set_url '/organizations{/org}/clients{/client}'
 
     element :create_link, :xpath, "(//a[contains(text(),'Create')])[5]"
     element :delete_link, :xpath, "(//a[contains(text(),'Delete')])[5]"
@@ -14,7 +14,7 @@ module Page
     element :close_button, 'button.btn.btn-close'
     element :reset_key_link, 'a.rekey'
     element :reset_key_button, 'button.btn.btn-warning.btn-reset'
-    element :reset_key_content, 'pre'
+    element :reset_key_content, 'div.modal-body pre'
 
     elements :client_grid, '#list-pane div.slick-cell.l0.r0'
 
@@ -64,6 +64,8 @@ module Page
       wait_for_reset_key_content
 
       key = reset_key_content.text # returns all newlines as spaces
+
+      wait_for_close_button
 
       close_button.click
 

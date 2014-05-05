@@ -1,7 +1,46 @@
+GIT
+  remote: https://github.com/opscode/chef-metal.git
+  revision: bcfbea2d918cec22d1e35ac33dd90443905f3767
+  branch: fix_vagrant_box
+  specs:
+    chef-metal (0.10.1)
+      chef
+      chef-metal-fog (~> 0.4)
+      chef-metal-vagrant (~> 0.3)
+      cheffish (~> 0.4)
+      inifile (~> 2.0)
+      net-scp (~> 1.0)
+      net-ssh (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.6)
+    berkshelf (3.1.1)
+      addressable (~> 2.3.4)
+      berkshelf-api-client (~> 1.2)
+      buff-config (~> 0.2)
+      buff-extensions (~> 0.4)
+      buff-shell_out (~> 0.1)
+      celluloid (~> 0.16.0.pre)
+      celluloid-io (~> 0.16.0.pre)
+      faraday (~> 0.9.0)
+      minitar (~> 0.5.4)
+      octokit (~> 3.0)
+      retryable (~> 1.3.3)
+      ridley (~> 3.1)
+      solve (~> 1.1)
+      thor (~> 0.18)
+    berkshelf-api-client (1.2.0)
+      faraday (~> 0.9.0)
+    buff-config (0.4.0)
+      buff-extensions (~> 0.3)
+      varia_model (~> 0.1)
+    buff-extensions (0.5.0)
+    buff-ignore (1.1.1)
+    buff-ruby_engine (0.1.0)
+    buff-shell_out (0.1.1)
+      buff-ruby_engine (~> 0.1.0)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -9,6 +48,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.16.0.pre)
+      timers (~> 2.0.0)
+    celluloid-io (0.16.0.pre)
+      celluloid (>= 0.16.0.pre)
+      nio4r (>= 1.0.0)
     chef (11.10.4)
       chef-zero (~> 1.7, >= 1.7.2)
       diff-lcs (~> 1.2, >= 1.2.4)
@@ -28,21 +72,11 @@ GEM
       puma (~> 1.6)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
-    chef-metal (0.9.4)
+    chef-metal-fog (0.4)
       chef
-      chef-metal-fog (~> 0.3)
-      chef-metal-vagrant (~> 0.2)
-      cheffish
-      inifile (~> 2.0)
-      net-scp (~> 1.0)
-      net-ssh (~> 2.0)
-    chef-metal-fog (0.3.1)
-      chef
+      cheffish (>= 0.4)
       fog
-    chef-metal-ssh (0.0.4)
-      chef
-      chef-metal (~> 0.6)
-    chef-metal-vagrant (0.2)
+    chef-metal-vagrant (0.3.1)
       chef
     chef-zero (1.7.3)
       hashie (~> 2.0)
@@ -50,14 +84,21 @@ GEM
       mixlib-log (~> 1.3)
       moneta (< 0.7.0)
       rack
-    cheffish (0.3)
+    cheffish (0.4)
       chef
+      openssl_pkcs8
     childprocess (0.5.3)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
+    dep-selector-libgecode (1.0.0)
+    dep_selector (1.0.3)
+      dep-selector-libgecode (~> 1.0)
+      ffi (~> 1.9)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     excon (0.33.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     fog (1.22.0)
       fog-brightbox
@@ -79,12 +120,14 @@ GEM
     formatador (0.2.4)
     hashie (2.1.1)
     highline (1.6.21)
+    hitimes (1.2.1)
     inifile (2.0.2)
     ipaddress (0.8.0)
     json (1.8.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.3)
+    minitar (0.5.4)
     mixlib-authentication (1.3.0)
       mixlib-log
     mixlib-cli (1.5.0)
@@ -93,6 +136,8 @@ GEM
     mixlib-shellout (1.4.0)
     moneta (0.6.0)
     multi_json (1.9.3)
+    multipart-post (2.0.0)
+    net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.0)
@@ -101,8 +146,11 @@ GEM
     net-ssh-multi (1.2.0)
       net-ssh (>= 2.6.5)
       net-ssh-gateway (>= 1.2.0)
+    nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    octokit (3.1.0)
+      sawyer (~> 0.5.3)
     ohai (6.22.0)
       ipaddress
       mixlib-cli
@@ -111,6 +159,7 @@ GEM
       mixlib-shellout
       systemu (~> 2.5.2)
       yajl-ruby
+    openssl_pkcs8 (0.1.2)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -122,17 +171,48 @@ GEM
       rack (>= 1.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    retryable (1.3.5)
+    ridley (3.1.0)
+      addressable
+      buff-config (~> 0.2)
+      buff-extensions (~> 0.3)
+      buff-ignore (~> 1.1)
+      buff-shell_out (~> 0.1)
+      celluloid (~> 0.16.0.pre)
+      celluloid-io (~> 0.16.0.pre)
+      erubis
+      faraday (~> 0.9.0)
+      hashie (>= 2.0.2)
+      json (>= 1.7.7)
+      mixlib-authentication (>= 1.3.0)
+      net-http-persistent (>= 2.8)
+      retryable
+      semverse (~> 1.1)
+      varia_model (~> 0.3)
     rubyzip (1.1.3)
+    sawyer (0.5.4)
+      addressable (~> 2.3.5)
+      faraday (~> 0.8, < 0.10)
     selenium-webdriver (2.41.0)
       childprocess (>= 0.5.0)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    semverse (1.1.0)
     site_prism (2.6)
       addressable (~> 2.3.3)
       capybara (>= 2.1, < 3.0)
     slop (3.5.0)
+    solve (1.2.0)
+      dep_selector (~> 1.0)
+      semverse (~> 1.1)
     systemu (2.5.2)
+    thor (0.19.1)
+    timers (2.0.0)
+      hitimes
+    varia_model (0.3.2)
+      buff-extensions (~> 0.2)
+      hashie (>= 2.0.2)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -142,10 +222,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  berkshelf (~> 3.0)
   capybara
   chef (= 11.10.4)
-  chef-metal (~> 0.9.0)
-  chef-metal-ssh
+  chef-metal!
   pry
   selenium-webdriver
   site_prism
