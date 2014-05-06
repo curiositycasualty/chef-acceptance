@@ -32,12 +32,11 @@ module Page
       end
     end
 
-    def create_org(fullname, shortname)
+    def create_org(org_factory = FactoryGirl.build(:org))
       create_link.click
-
-      create_org_modal.create fullname, shortname
-
+      create_org_modal.create org_factory.long_name, org_factory.short_name
       wait_for_org_grid
+      return org_factory
     end
 
     def reset_key

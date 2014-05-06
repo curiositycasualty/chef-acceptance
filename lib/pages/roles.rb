@@ -17,19 +17,16 @@ module Page
     section :run_list_modal, Modal::RunList, 'div.modal.in'
 
     # currently creates basic role
-    def create_role(name, description)
+    def create_role(role_factory = FactoryGirl.build(:role))
       create_link.click
-
       wait_for_role_modal
-
-      name_text.set name
-      description_text.set description
-      
+      name_text.set role_factory.name
+      description_text.set role_factory.description
       wait_for_create_org_button
       create_org_button.click
-      
       #wait_for_role_grid
       sleep 5
+      return role_factory
     end
 
     def delete_role

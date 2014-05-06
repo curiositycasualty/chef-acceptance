@@ -3,6 +3,7 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'yaml'
+require 'factory_girl'
 
 # make test config file configurable - env var
 test_config = YAML::load_file(File.join(File.dirname(__FILE__), '../test-config.yml'))
@@ -21,3 +22,5 @@ Capybara.current_session.driver.browser.manage.window.maximize
 SitePrism.configure do |config|
   config.use_implicit_waits = true
 end
+
+FactoryGirl.find_definitions

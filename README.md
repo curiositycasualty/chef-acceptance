@@ -25,6 +25,9 @@ rake berks_install # use binstubs
 rake
 ```
 
+### Factories
+Using `factory_girl` (expand upon this later)
+
 ### Test Clients
 Some tests will need nodes in order to validate certain features.  This is handled dynamically with chef-metal.  The example currently used is weak, but shows that we can provision nodes during a test run using data collected from the tests.
 
