@@ -19,9 +19,7 @@ module Page
 
     def select_user(name)
       wait_for_user_grid
-      
       user = find_user name
-
       if user.nil?
         raise 'User not found, nothing to select' 
       else
@@ -31,18 +29,12 @@ module Page
 
     def reset_key
       reset_key_link.click
-
       wait_for_reset_key_button
-
       reset_key_button.click
-
       wait_for_reset_key_content
-
       key = reset_key_content.text # returns all newlines as spaces
-
       close_button.click
-
-      return Test::Util.format_to_rsa(key)
+      return Util.format_to_rsa(key)
     end
   end
 end

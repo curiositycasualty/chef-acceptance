@@ -3,6 +3,19 @@ chef-acceptance
 
 End to end Chef acceptance tests
 
+### Currently Supports
+ * vagrant nodes (chef-metal)
+ * firefox
+ * knife exec
+
+#### Key Upcoming Features
+ * headless browser
+ * additional browser support (chrome, ie)
+ * ec2 nodes
+ * docker nodes
+ * saucelabs integration
+ * test-kitchen (kitchen-metal)
+
 ### Configuration
 Copy test-config.template.yml to test-config.yml
 
@@ -44,4 +57,13 @@ p = Page::Login.new
 p.load
 ```
 
+### Tools
+chef-acceptance uses many tools to drive the testing.
+Selenium Webdriver
+Selenium RubyBindings
+Capybara
+SitePrism
+FactoryGirl
+
 ### Standards and Conventions
+

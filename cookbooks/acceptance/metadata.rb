@@ -1,6 +1,6 @@
-name             'client'
+name             'acceptance'
 maintainer       'Patrick Wright'
 maintainer_email 'patrick@getchef.com'
 license          'All rights reserved'
-description      'Creates test node with chef-metal. Not intended to be uploaded to chef server'
+description      'Creates test nodes with chef metal and includes basic test recipes'
 version          '0.1.0'

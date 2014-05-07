@@ -6,7 +6,6 @@ require 'pages/login'
 require 'pages/organizations'
 
 include Navigation
-include Test
 
 feature 'Node roles converge associated recipes', :type => :feature do
   given(:login_page) { Page::Login.new }
@@ -32,10 +31,16 @@ feature 'Node roles converge associated recipes', :type => :feature do
     Policy.go_to_roles
     role = roles_page.create_role
 
-    # perhaps a single ChefMetal module
-    Util::Metal.run 'client::vagrant,client::chef_server,client::cleanup,client::vagrant,client::machines'
+    Header.sign_out # for good measure
 
-    Util::Knife.upload 'cookbooks'
-    Util::Knife.node 'run_list', "add jsmtest 'recipe[yum::test],role[#{role.name}]'"  
+    Metal.run 'acceptance::vagrant,acceptance::chef_server,acceptance::cleanup,acceptance::machines'
+
+    Knife.upload 'cookbooks'
+    Knife.node 'run_list', "add jsmtest 'recipe[tests::basic_test],role[#{role.name}]'"  
+
+    # NEXT!
+    out = system("cd vagrant_vms && vagrant ssh jsmtest -c 'sudo chef-client' && vagrant ssh jsmtest -c 'cat /opt/testfile' && cd ..")
+    puts out #heh
+    expect(out).to be true
   end
 end

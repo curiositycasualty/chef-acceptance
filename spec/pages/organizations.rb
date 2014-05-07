@@ -45,7 +45,7 @@ module Page
       wait_for_reset_key_content
       key = reset_key_content.text # returns all newlines as spaces
       close_button.click
-      return Test::Util.format_to_rsa(key)
+      return Util.format_to_rsa(key)
     end
   end
 end

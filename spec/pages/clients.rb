@@ -32,7 +32,7 @@ module Page
 
       close_button.click
 
-      return Test::Util.format_to_rsa(key)
+      return Util.format_to_rsa(key)
     end
 
     def find_client(name)
@@ -61,7 +61,7 @@ module Page
       key = reset_key_content.text # returns all newlines as spaces
       wait_for_close_button
       close_button.click
-      return Test::Util.format_to_rsa(key)
+      return Util.format_to_rsa(key)
     end
   end
 end

@@ -1,7 +1,5 @@
 DEPENDENCIES
-  apt (~> 2.0)
-  yum (~> 2.0)
+  apt (~> 2.3)
 
 GRAPH
   apt (2.3.10)
-  yum (2.4.4)
