@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'lib/util'
 
 module Page
   class Users < SitePrism::Page

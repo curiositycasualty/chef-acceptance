@@ -4,6 +4,8 @@ require 'selenium-webdriver'
 require 'site_prism'
 require 'yaml'
 require 'factory_girl'
+require 'fileutils'
+require 'util'
 
 # make test config file configurable - env var
 test_config = YAML::load_file(File.join(File.dirname(__FILE__), '../test-config.yml'))
@@ -24,3 +26,5 @@ SitePrism.configure do |config|
 end
 
 FactoryGirl.find_definitions
+
+FileUtils.mkdir_p "#{ENV['CHEF_TEST_DIR']}/work/pems"

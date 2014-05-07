@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'sections/create_org_modal'
-require 'lib/util'
 
 module Page
   class Organizations < SitePrism::Page
@@ -34,24 +33,18 @@ module Page
 
     def create_org(org_factory = FactoryGirl.build(:org))
       create_link.click
-      create_org_modal.create org_factory.long_name, org_factory.short_name
+      create_org_modal.create org_factory.full_name, org_factory.name
       wait_for_org_grid
       return org_factory
     end
 
     def reset_key
       reset_validation_key_link.click
-
       wait_for_reset_key_button
-
       reset_key_button.click
-
       wait_for_reset_key_content
-
       key = reset_key_content.text # returns all newlines as spaces
-
       close_button.click
-
       return Test::Util.format_to_rsa(key)
     end
   end

@@ -1,5 +1,5 @@
 class Org
-  attr_accessor :id, :long_name, :short_name
+  attr_accessor :id, :name, :full_name
 end
 
 class Login
@@ -10,12 +10,11 @@ class Role
   attr_accessor :name, :description
 end
 
-
 FactoryGirl.define do
   factory :org do
     id { Time.now.to_i.to_s }
-    long_name { "Test Org #{id}" }
-    short_name { "org#{id}" }
+    full_name { "Test Org #{id}" }
+    name { "org#{id}" }
   end
 
   factory :chef_login, class: Login do
@@ -24,7 +23,7 @@ FactoryGirl.define do
   end
 
   factory :role do
-    sequence(:name, Time.now.to_i.to_s) { |n| "role#{n}" }
+    sequence(:name) { |n| "role#{n}" }
     description ''
   end
 end

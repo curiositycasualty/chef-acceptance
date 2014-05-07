@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'lib/util'
 
 module Page
   class Clients < SitePrism::Page
@@ -54,21 +53,14 @@ module Page
       end
     end
 
-    def reset_key
+    def reset_key(write = true)
       reset_key_link.click
-
       wait_for_reset_key_button
-
       reset_key_button.click
-
       wait_for_reset_key_content
-
       key = reset_key_content.text # returns all newlines as spaces
-
       wait_for_close_button
-
       close_button.click
-
       return Test::Util.format_to_rsa(key)
     end
   end
