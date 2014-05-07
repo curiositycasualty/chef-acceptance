@@ -25,13 +25,9 @@ module Page
       check('client-validator') if options[:validation]
       wait_for_create_client_button
       create_client_button.click
-
       wait_for_private_key_content
-
       key = private_key_content.text # returns all newlines as spaces
-
       close_button.click
-
       return Util.format_to_rsa(key)
     end
 
@@ -43,9 +39,7 @@ module Page
 
     def select_client(name)
       wait_for_client_grid
-      
       client = find_client name
-
       if client.nil?
         raise 'Client not found, nothing to select' 
       else

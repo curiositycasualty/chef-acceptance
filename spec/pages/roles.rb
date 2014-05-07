@@ -34,15 +34,12 @@ module Page
 
     def edit_run_list
       edit_run_list_link.click
-
       wait_for_run_list_modal
-
-      sleep 3
+      #sleep 3
     end
 
     def find_role(name)
       wait_for_role_grid
-      
       role_grid.find do |role|
         role.text == name
       end

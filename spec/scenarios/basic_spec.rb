@@ -39,7 +39,7 @@ feature 'Node roles converge associated recipes', :type => :feature do
     Knife.node 'run_list', "add jsmtest 'recipe[tests::basic_test],role[#{role.name}]'"  
 
     # NEXT!
-    out = system("cd vagrant_vms && vagrant ssh jsmtest -c 'sudo chef-client' && vagrant ssh jsmtest -c 'cat /opt/testfile' && cd ..")
+    out = system("cd vagrant_vms && vagrant ssh jsmtest -c 'sudo chef-client' && vagrant ssh jsmtest -c 'cat /tmp/testfile' && cd ..")
     puts out #heh
     expect(out).to be true
   end

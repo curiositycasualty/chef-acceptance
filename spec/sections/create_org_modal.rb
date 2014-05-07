@@ -10,13 +10,10 @@ module Modal
 
     def create(fullname, shortname)
       org_fullname_input.set fullname
-      org_shortname_input.set shortname
-      
+      org_shortname_input.set shortname   
       wait_for_create_org_button
-
       create_org_button.click
-
-      sleep 5 # TODO:
+      sleep 5 # FIX!
     end
   end
 end

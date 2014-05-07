@@ -29,9 +29,7 @@ module Page
       signup_password_text.set password
       signup_company_text.set options[:company] if options[:company]
       signup_button.click
-
       create_new_org_button.click
-      
       create_org_modal.create org_full, org_short
     end
   end
