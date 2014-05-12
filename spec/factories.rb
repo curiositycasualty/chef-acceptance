@@ -1,9 +1,11 @@
+require 'faker'
+
 class Org
-  attr_accessor :id, :name, :full_name
+  attr_accessor :name, :full_name
 end
 
-class Login
-  attr_accessor :username, :password
+class User
+  attr_accessor :name, :username, :password, :email, :company
 end
 
 class Role
@@ -12,19 +14,24 @@ end
 
 FactoryGirl.define do
   factory :org do
-    id { Time.now.to_i.to_s }
-    full_name { "Test Org #{id}" }
-    name { "org#{id}" }
+    name { "#{Faker::Internet.domain_word}" }
+    full_name { "#{name}, #{Faker::Company.suffix}" }
   end
 
-  factory :chef_login, class: Login do
-    username 'chef'
-    password 'password'
+  factory :user do
+    name Faker::Name.name
+    username Faker::Internet.user_name
+    password 'passwd'
+    email Faker::Internet.email(username)
+    company Faker::Company.name
+
+    trait :username do
+      Faker::Internet.user_name
+    end
   end
 
   factory :role do
     sequence(:name) { |n| "role#{n}" }
-    description ''
+    description Faker::Lorem.sentence
   end
 end
-

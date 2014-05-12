@@ -33,8 +33,6 @@ Temporary: Create a user with username `chef` and password `password`.  Create a
 ```bash
 rake bundle # use binstubs
 
-rake berks_install # use binstubs
-
 rake
 ```
 
@@ -55,15 +53,26 @@ require 'pages/login'
 p = Page::Login.new
 
 p.load
+
+links = all('a')
 ```
 
 ### Tools
-chef-acceptance uses many tools to drive the testing.
-Selenium Webdriver
-Selenium RubyBindings
-Capybara
-SitePrism
-FactoryGirl
+chef-acceptance uses many tools
+ * Selenium Webdriver
+ * Capybara
+ * SitePrism
+ * FactoryGirl
+ * Faker
 
 ### Standards and Conventions
+
+
+### TODO
+ * each spec may have isolated cookbooks and misc files
+ * configuration feature to either "sign up" a main user or use an existing account
+ * improve dynamic knife execution. Should generate a knife file with static content
+ * knife opc setup and cleanup support (pivotal)
+ * remove users/
+ * continue refactoring env vars usage
 

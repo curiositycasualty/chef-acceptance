@@ -1,7 +1,3 @@
-# This file is used by chef-metal and knife
-# Values are dynamic
-require 'capybara'
-
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT

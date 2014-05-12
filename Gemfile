@@ -4,7 +4,7 @@ gem 'selenium-webdriver'
 gem 'capybara'
 gem 'site_prism'
 gem 'pry'
-gem 'serverspec'
+gem 'faker', '1.3.0'
 
 gem 'chef-metal', :git => 'https://github.com/opscode/chef-metal.git', :branch => 'fix_vagrant_box'
 gem 'chef', '11.10.4'

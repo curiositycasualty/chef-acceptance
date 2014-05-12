@@ -14,7 +14,7 @@ module Page
     element :signup_button, 'button.btn.btn-primary'
 
     # Welcome modal - Create New Org or Accept Invite
-    # Doesn't need to be a modal since it appears directly linear with this page
+    # Doesn't need to be a section since it appears directly linear with this page
     element :create_new_org_button,'div.btn.btn-primary.btn-create'
     element :accept_invite_button, 'div.btn.btn-primary.btn-invite'
     element :refresh_icon, 'icon-refresh.pull-left'
@@ -22,15 +22,16 @@ module Page
     # Create Org modal
     section :create_org_modal, Modal::CreateOrg, 'div.modal.in'
     
-    def sign_up(fullname, username, email, password, org_full, org_short, options = {})
-      signup_fullname_text.set fullname
-      signup_username_text.set username
-      signup_email_text.set email
-      signup_password_text.set password
-      signup_company_text.set options[:company] if options[:company]
+    def sign_up(user_factory = FactoryGirl.build(:user), org_factory = FactoryGirl.build(:org))
+      load
+      signup_fullname_text.set user_factory.name
+      signup_username_text.set "#{user_factory.username}\t"
+      signup_email_text.set user_factory.email
+      signup_password_text.set user_factory.password
+      signup_company_text.set user_factory.company
       signup_button.click
       create_new_org_button.click
-      create_org_modal.create org_full, org_short
+      create_org_modal.create(org_factory.full_name, org_factory.name)
     end
   end
 end

@@ -28,6 +28,9 @@ class Knife
     def node(subcommand, args = nil)
       system("#{@bin} node #{@config} #{subcommand} #{args}")
     end
+
+    def generate_config(org_factory)
+    end
   end
 end
 

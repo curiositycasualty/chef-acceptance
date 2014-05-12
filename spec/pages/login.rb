@@ -9,12 +9,16 @@ module Page
     element :login_button, 'input.btn.btn-small'
     element :landing_element, 'div.app'
 
-    def login(login_factory)
-      login_username_text.set login_factory.username
-      login_password_text.set login_factory.password
+    def login(user_factory)
+      load
+      login_username_text.set user_factory.username
+      login_password_text.set user_factory.password
+      starttime = Time.now.to_i
       login_button.click
       wait_for_landing_element
-      return login_factory
+      endtime = Time.now.to_i
+      puts "Login took #{endtime - starttime} secs"
+      return user_factory
     end
   end
 end
