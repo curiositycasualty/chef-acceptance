@@ -20,8 +20,8 @@ FactoryGirl.define do
 
   factory :user do
     name Faker::Name.name
-    username Faker::Internet.user_name
-    password 'passwd'
+    username Faker::Internet.user_name(nil, %w(_ -))
+    password 'password'
     email Faker::Internet.email(username)
     company Faker::Company.name
 
