@@ -4,6 +4,7 @@ require 'sections/create_org_modal'
 module Page
   class SignUp < SitePrism::Page
     set_url '/signup'
+    set_url_matcher /signup/
 
     # Sign Up landing page
     element :signup_fullname_text, '#signup-display-name'

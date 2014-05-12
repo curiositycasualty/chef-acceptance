@@ -34,6 +34,10 @@ module Navigation
       def go_to_nodes
         click_link 'Nodes'
       end
+
+      def signed_in_as
+        find('span.user-dropdown span.dropdown-toggle-label').text
+      end
     end
   end
 

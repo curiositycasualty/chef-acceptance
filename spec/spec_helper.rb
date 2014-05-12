@@ -6,7 +6,6 @@ require 'yaml'
 require 'factory_girl'
 require 'fileutils'
 require 'util'
-require 'rubygems'
 
 # make test config file configurable - env var
 test_config = YAML::load_file(File.join(ENV['CHEF_TEST_DIR'], 'test-config.yml'))
@@ -35,5 +34,3 @@ FactoryGirl.find_definitions
 
 # setup dir for generated pem files
 FileUtils.mkdir_p "#{ENV['CHEF_TEST_DIR']}/work/pems"
-
-I18n.enforce_available_locales = false
