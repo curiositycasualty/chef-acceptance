@@ -26,13 +26,14 @@ module Page
     def sign_up(user_factory = FactoryGirl.build(:user), org_factory = FactoryGirl.build(:org))
       load
       signup_fullname_text.set user_factory.name
-      signup_username_text.set "#{user_factory.username}\t"
+      signup_username_text.set user_factory.username
       signup_email_text.set user_factory.email
       signup_password_text.set user_factory.password
       signup_company_text.set user_factory.company
       signup_button.click
       create_new_org_button.click
       create_org_modal.create(org_factory.full_name, org_factory.name)
+      return { :user => user_factory, :org => org_factory }
     end
   end
 end

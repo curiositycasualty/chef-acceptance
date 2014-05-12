@@ -4,10 +4,10 @@ require 'capybara/dsl'
 module Navigation
   include Capybara::DSL
   
-  class Header  
+  class Header 
     class << self
       def open_feedback_modal
-        click_link 'span.usernav-section.report-bug'
+        find('div.usernav-section.report-bug').click
       end
 
       def click_chef_logo
