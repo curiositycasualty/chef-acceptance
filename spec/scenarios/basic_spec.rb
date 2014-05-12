@@ -25,7 +25,7 @@ feature 'Node roles converge associated recipes', :type => :feature do
     clients_page.load(:org => org.name, :client => "#{org.name}-validator")
 
     # Write a baked knife.rb with paths to generated keys, not just pem files
-    Util.write_pem(org.name, clients_page.reset_key)
+    #Util.write_pem(org.name, clients_page.reset_key)
 
     Policy.go_to_roles
     role = roles_page.create_role
