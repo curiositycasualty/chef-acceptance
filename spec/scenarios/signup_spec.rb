@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'pages/sign_up'
+#require 'pages/sign_up'
 require 'sections/navigation'
 require 'pages/roles'
 require 'pages/clients'
@@ -7,9 +7,10 @@ require 'pages/login'
 require 'pages/organizations'
 
 include Navigation
+include ChefManageApp
 
 feature 'Sign up users', :type => :feature do
-  given(:sign_up_page) { Page::SignUp.new }
+#  given(:sign_up_page) { Page::SignUp.new }
   given(:login_page) { Page::Login.new }
   given(:roles_page) { Page::Roles.new }
   given(:clients_page) { Page::Clients.new }

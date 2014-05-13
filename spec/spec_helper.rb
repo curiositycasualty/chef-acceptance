@@ -10,6 +10,10 @@ require 'util'
 # make test config file configurable - env var
 test_config = YAML::load_file(File.join(ENV['CHEF_TEST_DIR'], 'test-config.yml'))
 
+RSpec.configure do |c|
+  #c.filter_run :focus => true
+end
+
 # set implicit webdriver wait time
 Capybara.default_wait_time = test_config['wait_time']
 # configure site prism to use implicit wait
@@ -34,3 +38,11 @@ FactoryGirl.find_definitions
 
 # setup dir for generated pem files
 FileUtils.mkdir_p "#{ENV['CHEF_TEST_DIR']}/work/pems"
+
+require 'pages/sign_up'
+module ChefManageApp
+  def sign_up_page
+    Page::SignUp.new 
+  end
+end
+

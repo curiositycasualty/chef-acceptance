@@ -38,6 +38,20 @@ module Navigation
       def signed_in_as
         find('span.user-dropdown span.dropdown-toggle-label').text
       end
+
+      def select_organization(name)
+        find('div.usernav-section.organization').find('div.dropdown').find('a.dropdown-toggle').click
+        find(:xpath, "//a[contains(text(),'#{name}')]").click
+      end
+
+      def current_organization
+        find('span.organization-dropdown span.dropdown-toggle-label').text
+      end
+
+      def manage_organizations
+        find('div.usernav-section.organization').find('div.dropdown').find('a.dropdown-toggle').click
+        find(:xpath, "//a[contains(text(),'Manage Organizations')]").click
+      end
     end
   end
 

@@ -14,13 +14,13 @@ end
 
 FactoryGirl.define do
   factory :org do
-    name { "#{Faker::Internet.domain_word}" }
+    name { "#{Faker::Internet.domain_word}#{Faker::Number.number(6)}" }
     full_name { "#{name}, #{Faker::Company.suffix}" }
   end
 
   factory :user do
     name Faker::Name.name
-    username Faker::Internet.user_name(nil, %w(_ -))
+    username "#{Faker::Internet.user_name(nil, %w(_ -))}#{Faker::Number.number(6)}"
     password 'password'
     email Faker::Internet.email(username)
     company Faker::Company.name
