@@ -65,6 +65,7 @@ module Navigation
       end
 
       def go_to_data_bags
+        click_link 'Data Bags'
       end
 
       def go_to_environments

@@ -12,6 +12,10 @@ class Role
   attr_accessor :name, :description
 end
 
+class DataBag
+  attr_accessor :name
+end
+
 FactoryGirl.define do
   factory :org do
     name { "#{Faker::Internet.domain_word}#{Faker::Number.number(6)}" }
@@ -33,5 +37,9 @@ FactoryGirl.define do
   factory :role do
     sequence(:name) { |n| "role#{n}" }
     description Faker::Lorem.sentence
+  end
+
+  factory :data_bag do
+    name "#{Faker::Lorem.word}-#{Faker::Number.number(6)}"
   end
 end
