@@ -70,14 +70,16 @@ chef-acceptance uses many tools
 ### Environment Cleanup
 Automated environment maintenance is yet to be implemented and included as part of this project.  For now, you can use knife-opc and the provided helper scripts.
  1. copy the pivotal.pem file from the chef server to `work/pivotal.pem`
- 2. create `work/knife-opc.rb`
-  ```ruby
-  node_name 'pivotal'
-  client_key 'pivotal.pem'
-  chef_server_root 'https://<chef-server-url>'
-  ```
- 3. cd to the scripts dir-- cuz I'm lazy
- 4. `./delete_all_orgs.sh`
+ 1. create `work/knife-opc.rb` - content example below
+ 1. cd to the scripts dir-- cuz I'm lazy
+ 1. `./delete_all_orgs.sh`
+
+```ruby
+#knife-opc.rb
+node_name 'pivotal'
+client_key 'pivotal.pem'
+chef_server_root 'https://<chef-server-url>'
+```
 
 __Sayonara orgs!__
 
