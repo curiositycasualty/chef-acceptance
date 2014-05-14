@@ -67,6 +67,20 @@ chef-acceptance uses many tools
 
 ### Standards and Conventions
 
+### Environment Cleanup
+Automated environment maintenance is yet to be implemented and included as part of this project.  For now, you can use knife-opc and the provided helper scripts.
+1. copy the pivotal.pem file from the chef server to `work/pivotal.pem`
+2. create `work/knife-opc.rb`
+```ruby
+node_name 'pivotal'
+client_key 'pivotal.pem'
+chef_server_root 'https://<chef-server-url>'
+```
+3. cd to the scripts dir-- cuz I'm lazy
+4. `./delete_all_orgs.sh`
+__Sayonara orgs!__
+
+The delete_all_users will respectfully not delete the pivotal user or ponyville users.
 
 ### TODO
  * each spec may have isolated cookbooks and misc files
@@ -76,3 +90,5 @@ chef-acceptance uses many tools
  * continue refactoring env vars usage
  * some actions should be able to accept a string value or a factory object
  * refactor shared app objects like modals and the grid canvas objects
+ * improve window handlers
+ * figure out best approach to preloading all page objects for each spec

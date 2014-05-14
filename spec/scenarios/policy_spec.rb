@@ -1,38 +1,31 @@
 require 'spec_helper'
-require 'pages/sign_up'
 require 'sections/navigation'
-require 'pages/roles'
-require 'pages/clients'
 require 'pages/login'
-require 'pages/organizations'
 require 'pages/data_bags'
 
 include Navigation
 
 feature 'Policy', :type => :feature do
-  given(:sign_up_page) { Page::SignUp.new }
   given(:login_page) { Page::Login.new }
-  given(:roles_page) { Page::Roles.new }
-  given(:clients_page) { Page::Clients.new }
-  given(:organizations_page) { Page::Organizations.new }
   given(:data_bags_page) { Page::DataBags.new }
 
-  scenario "data bags" do
+  before(:each) do
     login_page.login FactoryGirl.build(:user, username: 'chef')
     Header.go_to_policy
     Policy.go_to_data_bags
+  end
+
+  scenario "data bags" do
     bag = data_bags_page.create_data_bag
     expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
 
     data_bags_page.select_data_bag(bag)
     item = data_bags_page.create_item
-    puts "#{item.id}, #{item.attributes}"
     expect(data_bags_page.find_item(item).text).to eq(item.id)
 
     # edit item
     data_bags_page.select_item(item)
-    json = { 'id' => "#{item.id}", 'toast' => 'jam'}
-    data_bags_page.edit_selected_item(json)
+    data_bags_page.edit_selected_item( { 'id' => "#{item.id}", 'toast' => 'jam'} )
     expect(data_bags_page.item_data_content.text).to eq("id: #{item.id} toast: jam")
 
     # delete item
@@ -47,16 +40,23 @@ feature 'Policy', :type => :feature do
   end
 
   scenario 'search data bag items' do
-  # add database
+    pending 'in progress'
+    bag = data_bags_page.create_data_bag
 
-  # add 3 items - test1, test2, foo
+    # add 3 items - test1, test2, foo
+    test1 = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'test1'))
+    data_bags_page.find_item(test1)
+    test2 = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'test2'))
+    data_bags_page.find_item(test2)
+    foo = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'foo'))
+    data_bags_page.find_item(foo)
 
-  # filter 'test' - should display two items
+    # filter 'test' - should display two items
 
-  # filter 'foo' should display 1 item
+    # filter 'foo' should display 1 item
 
-  # filter 'none' - should display 0 items
+    # filter 'none' - should display 0 items
 
-  # clean field - should display 3 items
+    # clean field - should display 3 items
   end
 end

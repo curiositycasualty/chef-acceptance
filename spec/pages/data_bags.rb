@@ -4,31 +4,28 @@ module Page
   class DataBags < SitePrism::Page
     set_url '/organizations{/org}/databags' 
 
-    element :create_link, :xpath, "(//a[contains(text(),'Create')])[2]"
-    element :data_bag_name_text, '#create-databag-name'
-    element :delete_link, :xpath, "(//a[contains(text(),'Delete')])[2]"
-    element :delete_data_bag_button, '.btn.btn-yes.btn-danger'
-    element :delete_data_bag_success_message, '.alert.alert-success'
-    element :create_item_link, :xpath, "(//a[contains(text(),'Create Item')])[2]"
-    element :item_id_text, '#create-databag-item-id'
-    element :item_attributes_text, 'textarea.attributes'
-    element :create_item_button, :xpath, '//button[@class="btn btn-submit btn-primary" and not(@disabled)]'
-    element :edit_item_link, 'div.item a.edit-item'
-    element :delete_item_link, 'div.item a.delete-item'
-    element :delete_item_button, '.btn.btn-danger'
-
     element :create_data_bag_button, :xpath, '//button[@class="btn btn-submit btn-primary" and not(@disabled)]'
     element :create_data_bag_modal, 'div.modal'
+    element :create_item_button, :xpath, '//button[@class="btn btn-submit btn-primary" and not(@disabled)]'
+    element :create_item_link, :xpath, "(//a[contains(text(),'Create Item')])[2]"
     element :create_item_modal, 'div.modal'
-
+    element :create_link, :xpath, "(//a[contains(text(),'Create')])[2]"
+    element :data_bag_name_text, '#create-databag-name'
+    element :delete_data_bag_button, '.btn.btn-yes.btn-danger'
+    element :delete_data_bag_success_message, '.alert.alert-success'
+    element :delete_item_button, '.btn.btn-danger'
+    element :delete_item_link, 'div.item a.delete-item'
+    element :delete_link, :xpath, "(//a[contains(text(),'Delete')])[2]"
+    element :edit_item_link, 'div.item a.edit-item'
+    element :item_attributes_text, 'textarea.attributes'
     element :item_data_content, '.databag-item-data'
+    element :item_id_text, '#create-databag-item-id'
+    element :modal, 'div.modal'
+    element :modal_close_button, '.btn.btn-close'
+    element :save_item_button, :xpath, '//button[@class="btn btn-primary" and not(@disabled)]'
 
     elements :data_bag_grid, 'div.ui-layout-container div.slick-cell.l0.r0'
     elements :item_grid, 'div.databag-items div.slick-cell.l0.r0'
-
-    element :save_item_button, :xpath, '//button[@class="btn btn-primary" and not(@disabled)]'
-    element :modal, 'div.modal'
-    element :modal_close_button, '.btn.btn-close'
 
     def create_data_bag(data_bag_factory = FactoryGirl.build(:data_bag))
       wait_for_create_link
