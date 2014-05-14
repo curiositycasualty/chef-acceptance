@@ -22,10 +22,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.6)
-    berkshelf (3.1.1)
+    berkshelf (3.1.2)
       addressable (~> 2.3.4)
       berkshelf-api-client (~> 1.2)
-      buff-config (~> 0.2)
+      buff-config (~> 0.4)
       buff-extensions (~> 0.4)
       buff-shell_out (~> 0.1)
       celluloid (~> 0.16.0.pre)
@@ -90,7 +90,7 @@ GEM
       mixlib-log (~> 1.3)
       moneta (< 0.7.0)
       rack
-    cheffish (0.4)
+    cheffish (0.4.1)
       chef
       openssl_pkcs8
     childprocess (0.5.3)
@@ -135,7 +135,7 @@ GEM
     json (1.8.1)
     method_source (0.8.2)
     mime-types (1.25.1)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitar (0.5.4)
     mixlib-authentication (1.3.0)
       mixlib-log
@@ -144,20 +144,20 @@ GEM
     mixlib-log (1.6.0)
     mixlib-shellout (1.4.0)
     moneta (0.6.0)
-    multi_json (1.9.3)
+    multi_json (1.10.0)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.0)
+    net-ssh (2.9.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     net-ssh-multi (1.2.0)
       net-ssh (>= 2.6.5)
       net-ssh-gateway (>= 1.2.0)
     nio4r (1.0.0)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     octokit (3.1.0)
       sawyer (~> 0.5.3)
     ohai (6.22.0)
@@ -238,5 +238,6 @@ DEPENDENCIES
   faker (= 1.3.0)
   knife-opc!
   pry
+  rest-client (~> 1.6.7)
   selenium-webdriver
   site_prism

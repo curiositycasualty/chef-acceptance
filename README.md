@@ -95,3 +95,5 @@ The delete_all_users will respectfully not delete the pivotal user or ponyville 
  * refactor shared app objects like modals and the grid canvas objects
  * improve window handlers
  * figure out best approach to preloading all page objects for each spec
+ * reorganzie specs (features and scenarios) appropriately
+ * refactor atrocious util library

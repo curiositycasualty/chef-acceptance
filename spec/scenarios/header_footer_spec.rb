@@ -21,6 +21,7 @@ feature 'Header and footer sections', :type => :feature do
   end
 
   scenario "verify feedback modals open via footer" do
+    pending 'awaiting pull request'
     login_page.login FactoryGirl.build(:user, username: 'chef')
     expect(page).not_to have_content 'support@getchef.com'
     Footer.open_feedback_modal

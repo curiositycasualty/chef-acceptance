@@ -20,6 +20,8 @@ module Page
     element :item_attributes_text, 'textarea.attributes'
     element :item_data_content, '.databag-item-data'
     element :item_id_text, '#create-databag-item-id'
+    element :item_search_text, '.databag-items #solr-search'
+    element :item_search_button, '.search-filter button'
     element :modal, 'div.modal'
     element :modal_close_button, '.btn.btn-close'
     element :save_item_button, :xpath, '//button[@class="btn btn-primary" and not(@disabled)]'
@@ -33,6 +35,7 @@ module Page
       data_bag_name_text.set data_bag_factory.name
       create_data_bag_button.click
       wait_until_create_data_bag_modal_invisible
+      find_data_bag data_bag_factory
       return data_bag_factory
     end
 
@@ -64,9 +67,13 @@ module Page
     def create_item(data_bag_item_factory = FactoryGirl.build(:data_bag_item))
       wait_for_create_item_link
       create_item_link.click
+      wait_for_item_id_text
       item_id_text.set data_bag_item_factory.id
       item_attributes_text.set data_bag_item_factory.attributes
+      wait_for_create_item_button
       create_item_button.click
+      wait_until_modal_invisible
+      find_item(data_bag_item_factory)
       return data_bag_item_factory
     end
 
@@ -99,6 +106,17 @@ module Page
       delete_item_link.click
       wait_for_delete_item_button
       delete_item_button.click
+    end
+
+    def search_item(name)
+      wait_for_item_search_text
+      item_search_text.set name
+      item_search_button.click
+      sleep 1
+      wait_for_item_grid
+      return item_grid.collect { |i|
+        i.text
+      }
     end
   end
 end

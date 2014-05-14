@@ -16,9 +16,11 @@ feature 'Policy', :type => :feature do
   end
 
   scenario "data bags" do
+    # create data bag
     bag = data_bags_page.create_data_bag
     expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
 
+    # create item
     data_bags_page.select_data_bag(bag)
     item = data_bags_page.create_item
     expect(data_bags_page.find_item(item).text).to eq(item.id)
@@ -40,7 +42,7 @@ feature 'Policy', :type => :feature do
   end
 
   scenario 'search data bag items' do
-    pending 'in progress'
+    # create databag
     bag = data_bags_page.create_data_bag
 
     # add 3 items - test1, test2, foo
@@ -50,13 +52,20 @@ feature 'Policy', :type => :feature do
     data_bags_page.find_item(test2)
     foo = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'foo'))
     data_bags_page.find_item(foo)
+    
+    # force solr index
+    Solr.force_update
 
     # filter 'test' - should display two items
+    expect(data_bags_page.search_item('test')).to match_array [test1.id, test2.id]
 
     # filter 'foo' should display 1 item
+    expect(data_bags_page.search_item('foo')).to match_array [foo.id]
 
     # filter 'none' - should display 0 items
+    expect(data_bags_page.search_item('none')).to match_array []
 
     # clean field - should display 3 items
+    expect(data_bags_page.search_item('')).to match_array [test1.id, test2.id, foo.id]
   end
 end

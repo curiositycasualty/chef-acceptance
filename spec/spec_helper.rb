@@ -23,6 +23,7 @@ end
 
 # set base url
 ENV['app_host'] = Capybara.app_host = test_config['app_host']
+ENV['search_host'] = test_config['search_host']
 
 # work together driver + browser
 Capybara.default_driver = test_config['driver'].to_sym

@@ -6,12 +6,12 @@ gem 'site_prism'
 gem 'pry'
 gem 'faker', '1.3.0'
 
-
 gem 'chef-metal', :git => 'https://github.com/opscode/chef-metal.git', :branch => 'fix_vagrant_box'
 gem 'chef', '11.10.4'
 gem 'berkshelf', "~> 3.0"
 
 gem 'knife-opc', :git => 'https://github.com/opscode/knife-opc.git'
+gem 'rest-client', '~> 1.6.7'
 
 # gem 'chef-metal', '0.9.4'
 # gem 'chef-metal-fog', '0.3'

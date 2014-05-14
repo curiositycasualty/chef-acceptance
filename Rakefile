@@ -30,7 +30,7 @@ end
 
 desc 'Clean bundled gems dir then install required Gems into the vendor/bundle directory'
 task :rebundle do
-  system("rm -rf vendor/bundle")
+  system("rm -rf vendor/bundle && rm Gemfile.lock")
   Rake::Task['bundle'].execute
 end
 

@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'rest_client'
 
 class Util
   class << self
@@ -40,6 +41,27 @@ class Metal
   class << self
     def run(run_list)
       system("#{@bin} #{@config} -o #{run_list}")
+    end
+  end
+end
+
+class Solr
+  class << self
+    # copied from pedant
+    # https://github.com/opscode/chef-pedant/blob/160dce6e1499c70cf88acea3bc66f86d8303044e/lib/pedant/rspec/search_util.rb#L643-L660
+    def force_update
+      url = "#{ENV['search_host']}/solr/update"
+      body = '<commit waitSearcher="true" waitFlush="true" softCommit="false"/>'
+      headers = {
+        "Content-Type" => "application/xml",
+        "Accept" => "application/xml"
+      }
+      # assuming we're running this after adding
+      # some things to Solr, we want to give it a little
+      # time to clear the queue.  In a test scenario, this
+      # should be enough of a wait.
+      sleep 0.500
+      RestClient.send :post, url, body, headers
     end
   end
 end
