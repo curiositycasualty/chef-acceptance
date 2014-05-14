@@ -69,6 +69,7 @@ module Navigation
       end
 
       def go_to_environments
+        click_link 'Environments'
       end
 
       def go_to_clients

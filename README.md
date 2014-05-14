@@ -35,6 +35,19 @@ rake bundle # use binstubs
 
 rake
 ```
+### TODO
+ * each spec may have isolated cookbooks and misc files
+ * configuration feature to either "sign up" a main user or use an existing account
+ * improve dynamic knife execution. Should generate a knife file with static content
+ * knife opc setup and cleanup support (pivotal)
+ * continue refactoring env vars usage
+ * some actions should be able to accept a string value or a factory object
+ * refactor shared app objects like modals and the grid canvas objects
+ * improve window handlers
+ * figure out best approach to preloading all page objects for each spec
+ * reorganzie specs (features and scenarios) appropriately
+ * refactor atrocious util library
+ * add custom matcher for grid/find objects. LAME! expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
 
 ### Factories
 Using `factory_girl` (expand upon this later)
@@ -84,16 +97,3 @@ chef_server_root 'https://<chef-server-url>'
 __Sayonara orgs!__
 
 The delete_all_users will respectfully not delete the pivotal user or ponyville users.
-
-### TODO
- * each spec may have isolated cookbooks and misc files
- * configuration feature to either "sign up" a main user or use an existing account
- * improve dynamic knife execution. Should generate a knife file with static content
- * knife opc setup and cleanup support (pivotal)
- * continue refactoring env vars usage
- * some actions should be able to accept a string value or a factory object
- * refactor shared app objects like modals and the grid canvas objects
- * improve window handlers
- * figure out best approach to preloading all page objects for each spec
- * reorganzie specs (features and scenarios) appropriately
- * refactor atrocious util library

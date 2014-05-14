@@ -6,6 +6,7 @@ require 'yaml'
 require 'factory_girl'
 require 'fileutils'
 require 'util'
+require 'yarjuf'
 
 # make test config file configurable - env var
 test_config = YAML::load_file(File.join(ENV['CHEF_TEST_DIR'], 'test-config.yml'))

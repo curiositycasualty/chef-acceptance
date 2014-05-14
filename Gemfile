@@ -12,6 +12,7 @@ gem 'berkshelf', "~> 3.0"
 
 gem 'knife-opc', :git => 'https://github.com/opscode/knife-opc.git'
 gem 'rest-client', '~> 1.6.7'
+gem 'yarjuf'
 
 # gem 'chef-metal', '0.9.4'
 # gem 'chef-metal-fog', '0.3'

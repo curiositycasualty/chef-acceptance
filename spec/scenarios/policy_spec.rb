@@ -47,12 +47,9 @@ feature 'Policy', :type => :feature do
 
     # add 3 items - test1, test2, foo
     test1 = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'test1'))
-    data_bags_page.find_item(test1)
-    test2 = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'test2'))
-    data_bags_page.find_item(test2)
+    test2 = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'test2'))  
     foo = data_bags_page.create_item(FactoryGirl.build(:data_bag_item, id: 'foo'))
-    data_bags_page.find_item(foo)
-    
+
     # force solr index
     Solr.force_update
 
@@ -67,5 +64,16 @@ feature 'Policy', :type => :feature do
 
     # clean field - should display 3 items
     expect(data_bags_page.search_item('')).to match_array [test1.id, test2.id, foo.id]
+  end
+
+  scenario 'environments' do
+    # 1.  Select to create an environment.
+    # 2.  Give the environment a name and description.
+    # 3.  Select 3-4 cookbooks as well as constraints.
+    # 4.  Enter default and override attributes.
+    # 5.  Save the environment.
+    # 6.  Verify the Environment shows in the environments list.
+    # 7.  Verify Description, cookbook constraints are as set.
+    # 8.  Verify Attributes as set.
   end
 end
