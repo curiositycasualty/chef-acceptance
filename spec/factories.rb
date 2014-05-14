@@ -16,6 +16,11 @@ class DataBag
   attr_accessor :name
 end
 
+class DataBagItem
+  attr_accessor :id, :attributes
+end
+
+
 FactoryGirl.define do
   factory :org do
     name { "#{Faker::Internet.domain_word}#{Faker::Number.number(6)}" }
@@ -41,5 +46,10 @@ FactoryGirl.define do
 
   factory :data_bag do
     name "#{Faker::Lorem.word}-#{Faker::Number.number(6)}"
+  end
+
+  factory :data_bag_item do
+    id "#{Faker::Lorem.word}-#{Faker::Number.number(6)}"
+    attributes '{}'
   end
 end

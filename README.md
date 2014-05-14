@@ -73,6 +73,6 @@ chef-acceptance uses many tools
  * configuration feature to either "sign up" a main user or use an existing account
  * improve dynamic knife execution. Should generate a knife file with static content
  * knife opc setup and cleanup support (pivotal)
- * remove users/
  * continue refactoring env vars usage
-
+ * some actions should be able to accept a string value or a factory object
+ * refactor shared app objects like modals and the grid canvas objects
