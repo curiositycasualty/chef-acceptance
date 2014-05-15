@@ -5,8 +5,8 @@ chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 task :default => [:spec]
 RSpec::Core::RakeTask.new do |task|
   task.pattern = 'spec/**/*_spec.rb'
-  task.verbose = true
-  task.rspec_opts = %w[-f JUnit -o results.xml]
+  task.verbose = false
+ # task.rspec_opts = %w[-f JUnit -o results.xml]
 end
 
 desc 'Bootstrap browser environment and start pry'

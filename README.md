@@ -35,6 +35,11 @@ rake bundle # use binstubs
 
 rake
 ```
+
+### Test Results
+ * rspec
+ * junit
+ 
 ### TODO
  * each spec may have isolated cookbooks and misc files
  * configuration feature to either "sign up" a main user or use an existing account
@@ -48,6 +53,8 @@ rake
  * reorganzie specs (features and scenarios) appropriately
  * refactor atrocious util library
  * add custom matcher for grid/find objects. LAME! expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
+    * fix grid selectors (handle empty alerts)
+ * lock down gem versions
 
 ### Factories
 Using `factory_girl` (expand upon this later)
