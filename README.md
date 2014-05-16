@@ -3,12 +3,12 @@ chef-acceptance
 
 End to end Chef acceptance tests
 
-### Currently Supports
+## Currently Supports
  * vagrant nodes (chef-metal)
  * firefox
  * knife exec
 
-#### Key Upcoming Features
+## Key Upcoming Features
  * headless browser
  * additional browser support (chrome, ie)
  * ec2 nodes
@@ -16,16 +16,23 @@ End to end Chef acceptance tests
  * saucelabs integration
  * test-kitchen (kitchen-metal)
 
+## Getting Started
+
+### Environment
+First you will need a running Enterprise Chef server up and running. Check out [ec-metal](https://github.com/opscode/ec-metal) for starting up EC HA.
+
 ### Configuration
 Copy test-config.template.yml to test-config.yml
 
-Set `app_host` to the full URL path of chef server front-end.
+Set `app_host` to the chef server front-end url.
 
-Set `driver` to selenium.  No other drivers currently supported.
+Set `search_host` to the active search node url.
 
-Set `browser` to firefox.  Maybe Chrome works... haven't tried it.
+Set `driver` to selenium.  No other are drivers currently supported.
 
-Set `wait_time` to 5.  Probably a good starting point.
+Set `browser` to firefox.
+
+Set `wait_time` to 5. Good starting point.
 
 Temporary: Create a user with username `chef` and password `password`.  Create an org -- any name will do.
 
@@ -35,10 +42,6 @@ rake bundle # use binstubs
 
 rake
 ```
-
-### Test Results
- * rspec
- * junit
  
 ### TODO
  * each spec may have isolated cookbooks and misc files
@@ -50,14 +53,15 @@ rake
  * refactor shared app objects like modals and the grid canvas objects
  * improve window handlers
  * figure out best approach to preloading all page objects for each spec
- * reorganzie specs (features and scenarios) appropriately
+ * reorganize specs (features and scenarios) appropriately
  * refactor atrocious util library
  * add custom matcher for grid/find objects. LAME! expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
     * fix grid selectors (handle empty alerts)
  * lock down gem versions
 
-### Factories
-Using `factory_girl` (expand upon this later)
+### Test Results
+ * rspec
+ * junit - coming soon
 
 ### Test Clients
 Some tests will need nodes in order to validate certain features.  This is handled dynamically with chef-metal.  The example currently used is weak, but shows that we can provision nodes during a test run using data collected from the tests.
@@ -91,15 +95,17 @@ chef-acceptance uses many tools
 Automated environment maintenance is yet to be implemented and included as part of this project.  For now, you can use knife-opc and the provided helper scripts.
  1. copy the pivotal.pem file from the chef server to `work/pivotal.pem`
  1. create `work/knife-opc.rb` - content example below
+
+  ```ruby
+  #knife-opc.rb
+  node_name 'pivotal'
+  client_key 'pivotal.pem'
+  chef_server_root 'https://<chef-server-url>'
+```
+
  1. cd to the scripts dir-- cuz I'm lazy
  1. `./delete_all_orgs.sh`
 
-```ruby
-#knife-opc.rb
-node_name 'pivotal'
-client_key 'pivotal.pem'
-chef_server_root 'https://<chef-server-url>'
-```
 
 __Sayonara orgs!__
 
