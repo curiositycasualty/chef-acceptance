@@ -1,11 +1,12 @@
 require "rspec/core/rake_task"
+require 'sauce'
 
 chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 
-task :default => [:spec]
+# task :default => [:spec]
 RSpec::Core::RakeTask.new do |task|
   task.pattern = 'spec/**/*_spec.rb'
-  task.verbose = false
+  task.verbose = true
  # task.rspec_opts = %w[-f JUnit -o results.xml]
 end
 
@@ -31,7 +32,7 @@ end
 
 desc 'Clean bundled gems dir then install required Gems into the vendor/bundle directory'
 task :rebundle do
-  system("rm -rf vendor/bundle && rm Gemfile.lock")
+  system("rm -rf vendor/bundle bin Gemfile.lock ")
   Rake::Task['bundle'].execute
 end
 

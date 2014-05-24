@@ -1,11 +1,12 @@
 require 'spec_helper'
 require 'capybara/dsl'
 
-module Navigation
-  include Capybara::DSL
+# module Navigation
+#   include Capybara::DSL
   
   class Header 
     class << self
+      include Capybara::DSL
       def open_feedback_modal
         find('div.usernav-section.report-bug').click
       end
@@ -36,7 +37,7 @@ module Navigation
       end
 
       def signed_in_as
-        find('span.user-dropdown span.dropdown-toggle-label').text
+        find('div.usernav-section.user').find('div.dropdown').find('a.dropdown-toggle').find('span.dropdown-toggle-label').text
       end
 
       def select_organization(name)
@@ -86,4 +87,4 @@ module Navigation
       end
     end
   end
-end
+# end
