@@ -43,3 +43,4 @@ build/
 /work/
 /clients/
 /results.xml
+/sauce_connect*

@@ -34,8 +34,6 @@ module Page
       create_link.click
       data_bag_name_text.set data_bag_factory.name
       create_data_bag_button.click
-      wait_until_create_data_bag_modal_invisible
-      find_data_bag data_bag_factory
       return data_bag_factory
     end
 

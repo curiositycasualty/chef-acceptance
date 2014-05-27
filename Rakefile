@@ -1,4 +1,5 @@
 require "rspec/core/rake_task"
+require 'sauce'
 
 chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 
@@ -31,7 +32,7 @@ end
 
 desc 'Clean bundled gems dir then install required Gems into the vendor/bundle directory'
 task :rebundle do
-  system("rm -rf vendor/bundle && rm Gemfile.lock")
+  system("rm -rf vendor/bundle Gemfile.lock .bundle bin ")
   Rake::Task['bundle'].execute
 end
 
