@@ -7,13 +7,13 @@ End to end Chef acceptance tests
  * vagrant nodes (chef-metal)
  * firefox
  * knife exec
+ * Sauce
 
 ## Key Upcoming Features
  * headless browser
  * additional browser support (chrome, ie)
  * ec2 nodes
  * docker nodes
- * saucelabs integration
  * test-kitchen (kitchen-metal)
 
 ## Getting Started
@@ -38,11 +38,25 @@ Temporary: Create a user with username `chef` and password `password`.  Create a
 
 ### Execution
 ```bash
-rake bundle # use binstubs
-
-rake
+rake bundle
 ```
+
+#### rake tasks
+ * `rake local` - runs tests on local workstation
+
+#### Sauce tasks
+You must have a Sauce account.  A free account will work just fine!
+
+http://saucelabs.com/signup
+
+ * `rake on_sauce` - runs tests on Sauce. Uses ondemand config: https://github.com/saucelabs/sauce_ruby/wiki/ondemand.yml
+ * `rake parallel_on_sauce` - runs tests on Sauce in parallel: https://github.com/saucelabs/sauce_ruby/wiki/Concurrent-Testing
+    * (SAUCE_USERNAME and SAUCE_ACCESS_KEY environments vars must be set for the parallel task)
  
+
+### Sauce Cost Conservation
+Remember that each test execution uses available platform and duration times.  For development, be sure to run tests locally.  When ready to run tests on Sauce only run tests of concern.
+
 ### TODO
  * each spec may have isolated cookbooks and misc files
  * configuration feature to either "sign up" a main user or use an existing account
@@ -52,12 +66,12 @@ rake
  * some actions should be able to accept a string value or a factory object
  * refactor shared app objects like modals and the grid canvas objects
  * improve window handlers
- * figure out best approach to preloading all page objects for each spec
- * reorganize specs (features and scenarios) appropriately
+ * ~~figure out best approach to preloading all page objects for each spec~~
+ * ~~reorganize specs (features and scenarios) appropriately~~
  * refactor atrocious util library
  * add custom matcher for grid/find objects. LAME! expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
     * fix grid selectors (handle empty alerts)
- * lock down gem versions
+ * ~~lock down gem versions~~
 
 ### Test Results
  * rspec
@@ -88,6 +102,7 @@ chef-acceptance uses many tools
  * SitePrism
  * FactoryGirl
  * Faker
+ * Sauce
 
 ### Standards and Conventions
 
