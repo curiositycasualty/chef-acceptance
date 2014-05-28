@@ -23,6 +23,17 @@ end
 ENV['app_host'] = Capybara.app_host = test_config['app_host']
 ENV['search_host'] = test_config['search_host']
 
+# set implicit webdriver wait time
+Capybara.default_wait_time = test_config['wait_time']
+# configure site prism to use implicit wait
+SitePrism.configure do |config|
+  config.use_implicit_waits = true
+end
+
+# find factories in default locations
+I18n.enforce_available_locales = false
+FactoryGirl.find_definitions
+
 if ENV["RUN_ON_SAUCE"]
   require 'sauce_helper'
   require 'sauce'
@@ -37,15 +48,3 @@ else
   end
   Capybara.current_session.driver.browser.manage.window.maximize
 end
-
-
-# set implicit webdriver wait time
-Capybara.default_wait_time = test_config['wait_time']
-# configure site prism to use implicit wait
-SitePrism.configure do |config|
-  config.use_implicit_waits = true
-end
-
-# find factories in default locations
-I18n.enforce_available_locales = false
-FactoryGirl.find_definitions

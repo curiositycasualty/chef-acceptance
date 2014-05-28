@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-feature 'User sign up', :sauce => ENV["RUN_ON_SAUCE"] do
+feature 'Sign up:', :sauce => ENV["RUN_ON_SAUCE"] do
 
   scenario "page is loaded when redirected from host url" do
     Capybara.visit Capybara.app_host
     sign_up_page.should be_displayed
   end
 
-  scenario "allows new user to successfully sign up, create an org and login" do
+  scenario "new user can successfully sign up, create an org and login" do
     user = build(:user)
     org = build(:org)
     

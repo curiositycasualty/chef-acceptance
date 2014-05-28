@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Data bags', :sauce => ENV["RUN_ON_SAUCE"], :focus => true do
+feature 'Data bags:', :sauce => ENV["RUN_ON_SAUCE"] do
 
   before(:each) do
     login_page.login build(:user, username: 'chef')

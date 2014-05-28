@@ -2,4 +2,4 @@ app_host: https://manage.opscode.piab
 search_host: http://backend1.opscode.piab:8983
 driver: selenium
 browser: firefox
-wait_time: 5
+wait_time: 30

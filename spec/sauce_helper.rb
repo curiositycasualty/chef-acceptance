@@ -5,6 +5,7 @@ require "sauce"
 # Set up configuration
 Sauce.config do |c|
   c[:browsers] = [ 
+
     ["OS X 10.9", "Firefox", "28"]#,
     #['Windows 8.1', 'Firefox', '28']
     #['Windows 8.1', 'Internet Explorer', '11'], # bug with create org?

@@ -3,11 +3,26 @@ require 'sauce'
 
 chef_test_dir = ENV['CHEF_TEST_DIR'] = File.dirname(__FILE__)
 
-task :default => [:spec]
+# task :default => [:spec]
 RSpec::Core::RakeTask.new do |task|
   task.pattern = 'spec/**/*_spec.rb'
   task.verbose = false
  # task.rspec_opts = %w[-f JUnit -o results.xml]
+end
+
+desc 'Run tests on local workstation'
+task :local do
+  system "bundle exec rake spec"
+end
+
+desc 'Run single threaded tests on Sauce'
+task :on_sauce do
+  system "RUN_ON_SAUCE=true bundle exec rake spec"
+end
+
+desc 'Run tests concurrently on Sauce'
+task :parallel_on_sauce do |args|
+  system "RUN_ON_SAUCE=true bundle exec rake sauce:spec #{args}"
 end
 
 desc 'Bootstrap browser environment and start pry'

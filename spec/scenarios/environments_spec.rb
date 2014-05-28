@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Environments', :sauce => ENV["RUN_ON_SAUCE"] do
+feature 'Environments:', :sauce => ENV["RUN_ON_SAUCE"] do
 
   before(:each) do
     login_page.login build(:user, username: 'chef')
