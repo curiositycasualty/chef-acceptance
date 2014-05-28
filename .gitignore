@@ -44,3 +44,4 @@ build/
 /clients/
 /results.xml
 /sauce_connect*
+/browsers.yml

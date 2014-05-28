@@ -54,6 +54,19 @@ http://saucelabs.com/signup
     * (SAUCE_USERNAME and SAUCE_ACCESS_KEY environments vars must be set for the parallel task)
  
 
+### Sauce Browser Config
+`browsers.yml` lists platform and browsers combinations that will be executed.
+
+https://saucelabs.com/platforms
+
+This yml file follows the following format for each combination:
+```yaml
+- ["OS", "Browser", "Version"]
+```
+
+
+
+
 ### Sauce Cost Conservation
 Remember that each test execution uses available platform and duration times.  For development, be sure to run tests locally.  When ready to run tests on Sauce only run tests of concern.
 

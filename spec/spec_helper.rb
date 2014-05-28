@@ -36,10 +36,6 @@ FactoryGirl.find_definitions
 
 if ENV["RUN_ON_SAUCE"]
   require 'sauce_helper'
-  require 'sauce'
-  require 'sauce/capybara'
-  Capybara.default_driver = :sauce
-  Capybara.javascript_driver = :sauce
 else
   # this will eventually truly configurable
   Capybara.default_driver = test_config['driver'].to_sym
