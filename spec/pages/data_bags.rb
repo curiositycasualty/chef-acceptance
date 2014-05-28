@@ -34,7 +34,7 @@ module Page
       create_link.click
       data_bag_name_text.set data_bag_factory.name
       create_data_bag_button.click
-      wait_until_modal_invisible
+      sleep 1
       return data_bag_factory
     end
 
@@ -61,7 +61,7 @@ module Page
       delete_data_bag_button.click
       wait_for_delete_data_bag_success_message
       modal_close_button.click
-      wait_until_modal_invisible
+      sleep 1
     end
 
     def create_item(data_bag_item_factory = FactoryGirl.build(:data_bag_item))
@@ -72,7 +72,7 @@ module Page
       item_attributes_text.set data_bag_item_factory.attributes
       wait_for_create_item_button
       create_item_button.click
-      wait_until_modal_invisible
+      sleep 1
       return data_bag_item_factory
     end
 

@@ -63,9 +63,8 @@ This yml file follows the following format for each combination:
 ```yaml
 - ["OS", "Browser", "Version"]
 ```
-
-
-
+### Sauce Parallel Config
+TODO: https://chef.leankit.com/Boards/View/89094464/107644261
 
 ### Sauce Cost Conservation
 Remember that each test execution uses available platform and duration times.  For development, be sure to run tests locally.  When ready to run tests on Sauce only run tests of concern.
@@ -85,6 +84,7 @@ Remember that each test execution uses available platform and duration times.  F
  * add custom matcher for grid/find objects. LAME! expect(data_bags_page.find_data_bag(bag).text).to eq(bag.name)
     * fix grid selectors (handle empty alerts)
  * ~~lock down gem versions~~
+ * remove sleeps
 
 ### Test Results
  * rspec

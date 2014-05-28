@@ -21,8 +21,8 @@ task :on_sauce do
 end
 
 desc 'Run tests concurrently on Sauce'
-task :parallel_on_sauce do |args|
-  system "RUN_ON_SAUCE=true bundle exec rake sauce:spec #{args}"
+task :parallel_on_sauce do
+  system "RUN_ON_SAUCE=true bundle exec rake sauce:spec"
 end
 
 desc 'Bootstrap browser environment and start pry'
