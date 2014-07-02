@@ -17,6 +17,7 @@ group :test, :development do
 
   gem 'rake'
   gem 'rspec'
+  gem 'berkshelf', '~> 3.0'
 end
 
 

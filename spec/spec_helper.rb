@@ -20,8 +20,13 @@ RSpec.configure do |c|
 end
 
 # set base url
-ENV['app_host'] = Capybara.app_host = test_config['app_host']
-ENV['search_host'] = test_config['search_host']
+if ENV['app_host']
+  Capybara.app_host = ENV['app_host']
+else
+  Capybara.app_host = test_config['app_host']
+end
+
+ENV['search_host'] = test_config['search_host'] unless ENV['search_host']
 
 # set implicit webdriver wait time
 Capybara.default_wait_time = test_config['wait_time']
