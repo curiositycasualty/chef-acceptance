@@ -45,3 +45,4 @@ build/
 /results.xml
 /sauce_connect*
 /browsers.yml
+/results/

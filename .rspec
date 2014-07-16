@@ -1,1 +1,11 @@
---require spec_helper
+--out results/rspec.out
+
+--format RspecJunitFormatter
+--out results/rspec.xml
+
+--format Fuubar
+
+--require rspec/instafail
+--format RSpec::Instafail
+
+--color

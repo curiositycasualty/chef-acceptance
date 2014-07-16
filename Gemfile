@@ -18,6 +18,10 @@ group :test, :development do
   gem 'rake'
   gem 'rspec'
   gem 'berkshelf', '~> 3.0'
+
+  gem 'rspec_junit_formatter'
+  gem 'fuubar'
+  gem 'rspec-instafail'
 end
 
 
