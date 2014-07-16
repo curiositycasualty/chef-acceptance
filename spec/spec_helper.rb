@@ -14,7 +14,7 @@ test_config = YAML::load_file(File.join(ENV['CHEF_TEST_DIR'], 'test-config.yml')
 RSpec.configure do |c|
   c.include(ChefManageApp)
   c.include(FactoryGirl::Syntax::Methods)
-  c.filter_run :focus => true
+  c.filter_run :focus => false
 end
 
 # set base url
